@@ -42,7 +42,7 @@ A beautiful, minimal AI-powered text transformation application built with React
    ```bash
    npm run dev
    ```
-4. Add your OpenAI URL and API_KEY here : [openaiApi.ts](https://github.com/lyaxsh/rephraserai) 
+4. Add your OpenAI URL and API_KEY here : [openaiApi.ts](https://github.com/lyaxsh/rephraserai/blob/main/src/services/openaiApi.ts)
 5. Open your browser and navigate to the local development URL
 6. Start transforming your text immediately!
 
