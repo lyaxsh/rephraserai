@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.3) transparent;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.3), rgb(255 255 255 / 0.5));
+    border-radius: 3px;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.7));
+  }
+
+  body {
+    font-family: 'Roboto Mono', monospace;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Custom selection colors */
+::selection {
+  background: rgb(255 255 255 / 0.3);
+  color: black;
+}
+
+::-moz-selection {
+  background: rgb(255 255 255 / 0.3);
+  color: black;
+}
+
+/* Focus styles */
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* Enhanced smooth scrolling */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Smooth scrolling for all elements */
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Better scroll performance */
+.container {
+  scroll-behavior: smooth;
+}
+
+/* Smooth transitions for layout changes */
+.glass-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth animation for all interactive elements */
+button, input, textarea, select {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
