@@ -1,4 +1,7 @@
 # Rephraser AI - Advanced Text Transformer
+## 🖼️ Preview
+
+![RephraserAI Screenshot](screenshot.png)
 
 A beautiful, minimal AI-powered text transformation application built with React, TypeScript, and OpenAI GPT-4. Transform your text with multiple features including rewriting, summarizing, expanding, shortening, and translation while enjoying a modern glassmorphism interface with Roboto Mono typography.
 
