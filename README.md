@@ -1,5 +1,5 @@
 # Rephraser AI - Advanced Text Transformer
-## 🖼️ Preview
+## 🖼️ Preview - https://rephraserai.netlify.app/
 
 ![RephraserAI Screenshot](screenshot.png)
 
