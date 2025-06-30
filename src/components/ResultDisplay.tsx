@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Copy, CheckCircle, ArrowRight, ExternalLink } from 'lucide-react';
 import { TransformResponse } from '../types';
 
@@ -8,6 +8,20 @@ interface ResultDisplayProps {
 
 const ResultDisplay: React.FC<ResultDisplayProps> = ({ result }) => {
   const [copied, setCopied] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to results when new result appears
+  useEffect(() => {
+    if (result && resultRef.current) {
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      }, 100);
+    }
+  }, [result]);
 
   if (!result) return null;
 
@@ -47,14 +61,15 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ result }) => {
     
     return parts.map((part, index) => {
       if (part.startsWith('<strong>') && part.endsWith('</strong>')) {
-        return <span key={index} className="font-bold text-white text-lg">{part.slice(8, -9)}</span>;
+        const content = part.slice(8, -9);
+        return <span key={index} className="font-bold text-white text-xl">{content}</span>;
       }
       if (part.startsWith('<em>') && part.endsWith('</em>')) {
         return <em key={index} className="italic text-gray-300">{part.slice(4, -5)}</em>;
       }
       if (part.match(/<h[1-6]>.*?<\/h[1-6]>/)) {
         const content = part.replace(/<h[1-6]>(.*?)<\/h[1-6]>/, '$1');
-        return <div key={index} className="font-bold text-xl text-white mt-4 mb-2 border-b border-white/20 pb-1">{content}</div>;
+        return <div key={index} className="font-bold text-2xl text-white mt-4 mb-2 border-b border-white/20 pb-1">{content}</div>;
       }
       if (part.match(/<a[^>]*>.*?<\/a>/)) {
         const href = part.match(/href="([^"]*)"/) ? part.match(/href="([^"]*)"/)?.[1] : '#';
@@ -84,7 +99,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ result }) => {
   };
 
   return (
-    <div className="glass-card rounded-2xl p-6 mb-8 animate-fadeIn">
+    <div ref={resultRef} className="glass-card rounded-2xl p-6 mb-8 animate-fadeIn">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
         <h3 className="text-lg font-semibold text-white">Transformed Text</h3>
