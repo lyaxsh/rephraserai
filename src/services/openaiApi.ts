@@ -65,13 +65,15 @@ Please provide only the translated text without any additional explanation or fo
         prompt = `${request.feature.prompt}: "${request.text}"
 
 Please provide a comprehensive, accurate, and helpful answer. Format your response using:
-- **Bold text** for important points and headings
+- **Bold text** for important points and headings (use **text** format)
 - Use markdown links like [text](url) for any URLs or references
 - Use bullet points with - or * for lists
 - Use proper line breaks for readability
 - Structure your answer clearly with headings if needed
 - DO NOT include any tables in your response - use bullet points or numbered lists instead
-- Keep formatting simple and clean`;
+- DO NOT use <strong> tags - only use **text** for bold formatting
+- Keep formatting simple and clean
+- Avoid complex HTML formatting`;
         break;
       default:
         prompt = `Process this text: "${request.text}"`;
